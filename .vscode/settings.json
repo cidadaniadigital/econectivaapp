@@ -1,0 +1,11 @@
+{
+  "dart.lineLength": 150,
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.hover.delay": 750,
+  "editor.hover.enabled": "on",
+  "editor.hover.above": true,
+}

@@ -1,0 +1,458 @@
+{
+  "retrieved_on": "2026-11-01",
+  "note": "Imagens das próprias páginas e conteúdos cadastrados, usadas como capas com a referência de origem preservada.",
+  "covers": [
+    {
+      "clue_ids": [
+        44
+      ],
+      "names": [
+        "Dança da chuva Parte I - A Dança da Chuva - Antonio Nobre/INPE"
+      ],
+      "path": "covers/44-09a2d740c6d4.jpg",
+      "source_page": "https://www.youtube.com/watch?v=lyp83uYdtbk",
+      "source_image": "https://i.ytimg.com/vi/lyp83uYdtbk/maxresdefault.jpg",
+      "sha256": "09a2d740c6d4f299ac74bf576a31336ceeab5ca37e646cb95abbf68d0eacc22b",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 142885
+    },
+    {
+      "clue_ids": [
+        45
+      ],
+      "names": [
+        "Grow"
+      ],
+      "path": "covers/45-4cfca7c53cfd.jpg",
+      "source_page": "https://www.youtube.com/watch?v=QVd29nr9Emo",
+      "source_image": "https://i.ytimg.com/vi/QVd29nr9Emo/maxresdefault.jpg",
+      "sha256": "4cfca7c53cfd7f1c5e7c513258cf346839507cb88c5bb32e64d313d62d06299b",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 136234
+    },
+    {
+      "clue_ids": [
+        46
+      ],
+      "names": [
+        "A mudança climática e as duas Amazônias"
+      ],
+      "path": "covers/46-9e1f5ea7588d.jpg",
+      "source_page": "https://www.nexojornal.com.br/externo/2019/11/12/A-mudan%C3%A7a-clim%C3%A1tica-e-as-duas-Amaz%C3%B4nias",
+      "source_image": "https://nexo-uploads-beta.s3.amazonaws.com/wp-content/uploads/images/2023/12/21133048/018-029_capa-amazonia-1_285-7-1140px_binary_183730-640x399.jpg",
+      "sha256": "9e1f5ea7588d2ba46c23b4e2189382be055f822bcae59a89249bc8e94b810ccb",
+      "width": 640,
+      "height": 399,
+      "fit": "cover",
+      "bytes": 70573
+    },
+    {
+      "clue_ids": [
+        47
+      ],
+      "names": [
+        "EYES IN THE FOREST: Saving Wildlife in Colombia Using Camera Traps and AI"
+      ],
+      "path": "covers/47-13518e6f2e9b.jpg",
+      "source_page": "https://www.youtube.com/watch?v=zsiTx5qjn7c",
+      "source_image": "https://i.ytimg.com/vi/zsiTx5qjn7c/maxresdefault.jpg",
+      "sha256": "13518e6f2e9b4771ce5498bce89057fa472249901e1a9697c50375c88387df87",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 259402
+    },
+    {
+      "clue_ids": [
+        48
+      ],
+      "names": [
+        "Fazenda Conectada"
+      ],
+      "path": "covers/48-b4b9857ad19a.jpg",
+      "source_page": "https://jornal.usp.br/podcast/jornal-da-usp-fazenda-digital-da-usp-leva-inovacao-para-producao-agricola/",
+      "source_image": "https://jornal.usp.br/wp-content/uploads/2019/12/subcanal_jornaldausp_fazenda.jpg",
+      "sha256": "b4b9857ad19af43390fc781911770586ba31e52109991fc8489952e09bde9019",
+      "width": 1400,
+      "height": 1400,
+      "fit": "cover",
+      "bytes": 274825
+    },
+    {
+      "clue_ids": [
+        49
+      ],
+      "names": [
+        "RAINFOREST CONNECTION"
+      ],
+      "path": "covers/49-4c93394bad73.jpg",
+      "source_page": "https://www.youtube.com/watch?time_continue=4&v=xPK2Ch90xWo&feature=emb_logo",
+      "source_image": "https://i.ytimg.com/vi/xPK2Ch90xWo/maxresdefault.jpg",
+      "sha256": "4c93394bad733dbc79dbe29b930f239632ea909c636eba8cb230582c9fb43b7c",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 83058
+    },
+    {
+      "clue_ids": [
+        57
+      ],
+      "names": [
+        "Forum: GovTech Europe"
+      ],
+      "path": "covers/57-b10c98414d06.jpg",
+      "source_page": "https://open.spotify.com/show/4izalLUfnVtkWFSH5veuZt",
+      "source_image": "https://i.scdn.co/image/ab6765630000ba8a42c2e622c3d6b62183b8af0f",
+      "sha256": "b10c98414d06a75dc86c5efada0667a3d8c2d49a29f521112c34463a22537c84",
+      "width": 640,
+      "height": 640,
+      "fit": "cover",
+      "bytes": 26473
+    },
+    {
+      "clue_ids": [
+        58
+      ],
+      "names": [
+        "The Public Sector Pod"
+      ],
+      "path": "covers/58-d159c9c75d22.jpg",
+      "source_page": "https://open.spotify.com/show/6vHSzF67VUDVpH3CMa1OYF",
+      "source_image": "https://i.scdn.co/image/ab6765630000ba8aa62f559a91c9f978a5bcd6b6",
+      "sha256": "d159c9c75d2214bb3ccfc0f08f6a1a001c74b8093070bffd97257cb5704cb60f",
+      "width": 640,
+      "height": 640,
+      "fit": "cover",
+      "bytes": 78579
+    },
+    {
+      "clue_ids": [
+        59
+      ],
+      "names": [
+        "#02 _ Govtechs e o poder da tecnologia na gestão pública com Carlos França e Marco Zanatta"
+      ],
+      "path": "covers/59-7cd5366ae31c.jpg",
+      "source_page": "https://open.spotify.com/episode/2WHdBfRaVCJyLp3hbaZ12N?si=V5I8YCBvTc2fahrZWigUSQ",
+      "source_image": "https://i.scdn.co/image/ab6765630000ba8a46cb25bb3887fb295c0608be",
+      "sha256": "7cd5366ae31ceafbd325090aca4552ddba9af6a85d587b518e3590e98a71ec5c",
+      "width": 640,
+      "height": 640,
+      "fit": "cover",
+      "bytes": 75929
+    },
+    {
+      "clue_ids": [
+        60
+      ],
+      "names": [
+        "BrazilLAB Talks | As startups GovTech e o futuro do governo no Brasil"
+      ],
+      "path": "covers/60-478e7933f09a.jpg",
+      "source_page": "https://www.youtube.com/watch?v=qxOCn6MHqQU",
+      "source_image": "https://i.ytimg.com/vi/qxOCn6MHqQU/maxresdefault.jpg",
+      "sha256": "478e7933f09a198de4bccc6edc279e16f84be5ff5344272937dfef664e4f5af0",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 85501
+    },
+    {
+      "clue_ids": [
+        61
+      ],
+      "names": [
+        "GovTech: Putting People First"
+      ],
+      "path": "covers/61-19086bb1ead2.jpg",
+      "source_page": "https://www.youtube.com/watch?v=TmG21BAfxPI",
+      "source_image": "https://i.ytimg.com/vi/TmG21BAfxPI/maxresdefault.jpg",
+      "sha256": "19086bb1ead29e095c148c6305e955adf59016dbcabfef9d7ac41e9056c25787",
+      "width": 1280,
+      "height": 720,
+      "fit": "cover",
+      "bytes": 38744
+    },
+    {
+      "clue_ids": [
+        50
+      ],
+      "names": [
+        "Array of things"
+      ],
+      "path": "covers/50-1f256060080c.jpg",
+      "source_page": "https://arrayofthings.github.io/",
+      "source_image": "https://arrayofthings.github.io/images/aot-installation.jpg",
+      "sha256": "1f256060080cce18c8121b3f531fba4d7d5bb3f75a6d1ca4dd79543df939ec4c",
+      "width": 500,
+      "height": 500,
+      "fit": "cover",
+      "bytes": 53975
+    },
+    {
+      "clue_ids": [
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "names": [
+        "Centro de Valorização da Vida (CVV) SP",
+        "Centro de Valorização da Vida (CVV) RS",
+        "Centro de Valorização da Vida (CVV) RN",
+        "Centro de Valorização da Vida (CVV) DF",
+        "Centro de Valorização da Vida (CVV) MT"
+      ],
+      "path": "covers/34-2a3ef10e0a6a.png",
+      "source_page": "https://cvv.org.br/",
+      "source_image": "https://cvv.org.br/wp-content/themes/cvv/img/logo.png",
+      "sha256": "2a3ef10e0a6a1c8a17bcf2ef9b03d46d31dbc423ea90dd00d340156094de8714",
+      "width": 176,
+      "height": 108,
+      "fit": "contain",
+      "bytes": 6833
+    },
+    {
+      "clue_ids": [
+        65
+      ],
+      "names": [
+        "Prefeitura Municipal de Bom Princípio"
+      ],
+      "path": "covers/65-3f7b00e8421e.png",
+      "source_page": "https://www.bomprincipio.rs.gov.br/site",
+      "source_image": "https://www.bomprincipio.rs.gov.br/images/logo-pref.png",
+      "sha256": "3f7b00e8421e3301b9f42cb96511e8bb8ce07315ab510303f0429a655adb51a3",
+      "width": 472,
+      "height": 576,
+      "fit": "contain",
+      "bytes": 324703
+    },
+    {
+      "clue_ids": [
+        77
+      ],
+      "names": [
+        "How technology in cities can help deliver a sustainable future"
+      ],
+      "path": "covers/cdig-resource-65-0cda94605788.jpg",
+      "source_page": "https://www.theguardian.com/sustainable-business/technology-cities-deliver-sustainable-future",
+      "source_image": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2012/2/27/1330350142927/A-view-of-the-Singapore-c-008.jpg?width=620&dpr=2&s=none&crop=none",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/green-data",
+      "source_id": "resource-65",
+      "credit": "Singapore is working to reduce both traffic congestion and air pollution through intelligent transportation solutions. Photograph: Luis Enrique Ascui/REUTERS",
+      "sha256": "0cda946057888627c829951febc171a0df55f11e9470cedc5b745869d694a490",
+      "width": 460,
+      "height": 276,
+      "fit": "cover",
+      "bytes": 12585,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        78
+      ],
+      "names": [
+        "Will the internet of things sacrifice or save the environment?"
+      ],
+      "path": "covers/cdig-resource-64-dddb2bf44e93.jpg",
+      "source_page": "https://www.theguardian.com/sustainable-business/2016/dec/12/will-the-internet-of-things-sacrifice-or-save-the-environment",
+      "source_image": "https://i.guim.co.uk/img/media/3f37594c31bf13ef582e481069dc68778586cb0b/0_192_5760_3456/master/5760.jpg?width=620&dpr=2&s=none&crop=none",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/green-data",
+      "source_id": "resource-64",
+      "credit": "The Facebook Luleå data centre in northern Sweden, which takes advantage of a climate that allows for outside air to be used for cooling rather than using air conditioning. Photograph: David Levene/The Guardian",
+      "sha256": "dddb2bf44e93ce45974b4bdf62a13a9d912b3d38b127756713afdbb37822a6d4",
+      "width": 1240,
+      "height": 744,
+      "fit": "cover",
+      "bytes": 77204,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        79
+      ],
+      "names": [
+        "Drones and big data: the next frontier in the fight against wildlife extinction"
+      ],
+      "path": "covers/cdig-resource-63-86d23b2e360b.jpg",
+      "source_page": "https://www.theguardian.com/education/2019/feb/18/drones-and-big-data-the-next-frontier-in-the-fight-against-wildlife-extinction",
+      "source_image": "https://i.guim.co.uk/img/media/a22cebddcc6b0c168b6b1d37d8c6f0d5fafbfa75/624_588_3854_2312/master/3854.jpg?width=620&dpr=2&s=none&crop=none",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/green-data",
+      "source_id": "resource-63",
+      "credit": "A recent Zoological Society of London conservation research project involved drones. Photograph: The Zoological Society of London",
+      "sha256": "86d23b2e360be95ea2a5904938efb9cab2610fb6a1aa61370534ed4729e91b35",
+      "width": 1240,
+      "height": 744,
+      "fit": "cover",
+      "bytes": 55929,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        80
+      ],
+      "names": [
+        "Alunos da Unidade Pindorama participam do I Festival de Cidadania Digital"
+      ],
+      "path": "covers/cdig-resource-254-3bb1b41e446d.jpg",
+      "source_page": "https://educacaobasica.ienh.com.br/br/alunos-da-unidade-pindorama-participam-do-i-festival-de-cidadania-digital",
+      "source_image": "https://site.ienh.com.br/wp-content/uploads/2020/12/alunos-da-unidade-pindorama-participam-do-i-festival-de-cidadania-digital.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-254",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "3bb1b41e446df1e9f327f85539bb8641c52ce8ad35e1afd419ee9bc02e6a5c69",
+      "width": 1440,
+      "height": 900,
+      "fit": "cover",
+      "bytes": 97106,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        81
+      ],
+      "names": [
+        "Tecnologia auxilia alunos da IENH a continuarem com o projeto Traces in the City"
+      ],
+      "path": "covers/cdig-resource-253-729c5ea92ffe.jpg",
+      "source_page": "https://educacaobasica.ienh.com.br/br/tecnologia-auxilia-alunos-da-ienh-a-continuarem-com-o-projeto-traces-in-the-city",
+      "source_image": "https://site.ienh.com.br/wp-content/uploads/2020/12/tecnologia-auxilia-alunos-da-ienh-a-continuarem-com-o-projeto-traces-in-the-city.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-253",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "729c5ea92ffe9d55bf998c1a8ba6c8d5ce94939929dbc715fd1864cb19da346a",
+      "width": 1280,
+      "height": 533,
+      "fit": "cover",
+      "bytes": 91483,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        82
+      ],
+      "names": [
+        "Gamificação: da escola para comunidade"
+      ],
+      "path": "covers/cdig-resource-252-c260856561d1.jpg",
+      "source_page": "https://www.youtube.com/watch?v=dpDOBX-Uh1M",
+      "source_image": "https://i.ytimg.com/vi/dpDOBX-Uh1M/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-252",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "c260856561d16f8bcf7b13cbbd5377dd58e78785d74bc5e4a1d4e7ca03db1eae",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 9445,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        83
+      ],
+      "names": [
+        "A programação de jogos para aprender e ensinar - TEDxUnisinosSalon"
+      ],
+      "path": "covers/cdig-resource-251-9dc634d607dc.jpg",
+      "source_page": "https://www.youtube.com/watch?v=5VgpzJ08fbY",
+      "source_image": "https://i.ytimg.com/vi/5VgpzJ08fbY/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-251",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "9dc634d607dc5b2f653273e89b56416503dc7d0979142bba92bfad10f05415b7",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 7299,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        84
+      ],
+      "names": [
+        "In Vino Veritas Gameplay"
+      ],
+      "path": "covers/cdig-resource-248-84ab7e1db80b.jpg",
+      "source_page": "https://youtu.be/F0-peXm6Z_0",
+      "source_image": "https://i.ytimg.com/vi/F0-peXm6Z_0/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-248",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "84ab7e1db80bfe4c034f5a4762d7af55127e996f39118ac5e21003896d702182",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 10734,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        85
+      ],
+      "names": [
+        "MoveOnCibricity"
+      ],
+      "path": "covers/cdig-resource-247-b5f50ba56857.jpg",
+      "source_page": "https://youtu.be/IXJYfMAvA18",
+      "source_image": "https://i.ytimg.com/vi/IXJYfMAvA18/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-247",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "b5f50ba56857770642646621484404f21aa02a9bbff0dc2da5f986537cf5e0b4",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 12540,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        86
+      ],
+      "names": [
+        "Alunos criam jogo sobre Novo Hamburgo usando o Ozobot"
+      ],
+      "path": "covers/cdig-resource-142-0b68461d34af.jpg",
+      "source_page": "https://youtu.be/wrWk9yLhAQU",
+      "source_image": "https://i.ytimg.com/vi/wrWk9yLhAQU/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/pos-cidades",
+      "source_id": "resource-142",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "0b68461d34af13e397f8ffa64c0167a29eb62a0c88d29cd907be5f906aa46189",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 17039,
+      "retrieved_on": "2026-11-01"
+    },
+    {
+      "clue_ids": [
+        87
+      ],
+      "names": [
+        "Ecologia da informação: big data, fake news e mundos possíveis"
+      ],
+      "path": "covers/cdig-resource-272-d6b0a06bd30f.jpg",
+      "source_page": "https://www.youtube.com/watch?v=oKINxlw6mMA",
+      "source_image": "https://i.ytimg.com/vi/oKINxlw6mMA/hqdefault.jpg",
+      "source_catalogue": "https://plataformacidadaniadigital.com.br/special/ecologia-informacao",
+      "source_id": "resource-272",
+      "credit": "Miniatura ou imagem do recurso original indicado no acervo Cidadania Digital.",
+      "sha256": "d6b0a06bd30f3f826fb27ad1e4290984e9a17f0ff9ce29d111c07b929ce9905c",
+      "width": 480,
+      "height": 360,
+      "fit": "cover",
+      "bytes": 10378,
+      "retrieved_on": "2026-11-01"
+    }
+  ]
+}

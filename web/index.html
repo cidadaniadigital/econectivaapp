@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta name="google-signin-client_id"
+    content="431431134667-um6jg495v89qp5blfkdimi585s2jqfmm.apps.googleusercontent.com" />
+
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+  <meta name="description" content="Aplicativo Unisinos USP - Web" />
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Plataforma eCOnectiva" />
+  <link rel="apple-touch-icon" href="icons/Icon-192.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Desabilita cache apenas do index (garante sincronismo com main.dart.js) -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>Plataforma eCOnectiva</title>
+
+</head>
+
+<body>
+  <!-- PDF.js import seguro -->
+  <script defer type="module">
+    import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.9.155/pdf.min.mjs";
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.9.155/pdf.worker.min.mjs";
+    window.pdfjsLib = pdfjsLib;
+
+  </script>
+
+  <script>
+    // Retire only our legacy cache and messaging workers; never reload the page.
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (const registration of registrations) {
+          const worker = registration.active || registration.waiting || registration.installing;
+          if (worker && ['/flutter_service_worker.js', '/firebase-messaging-sw.js'].includes(new URL(worker.scriptURL).pathname)) {
+            registration.update().catch(() => {});
+          }
+        }
+      }).catch(() => {});
+    }
+  </script>
+  <!-- Bootstrap padrão do Flutter -->
+  <script src="flutter_bootstrap.js" defer></script>
+</body>
+
+</html>
