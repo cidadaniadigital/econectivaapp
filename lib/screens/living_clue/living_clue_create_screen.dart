@@ -1,3 +1,4 @@
+import 'package:unisinos_usp_app/widgets/similar_clues_notice.dart';
 import 'package:unisinos_usp_app/webclients/living_clue_webclient.dart';
 import 'package:flutter/material.dart';
 import 'package:unisinos_usp_app/widgets/rich_clue_editor.dart';
@@ -100,6 +101,7 @@ class _LivingClueCreateScreenState extends State<LivingClueCreateScreen> {
                                     [PRuleRequired(v, message: 'Obrigatório')])
                                 .val(),
                           ),
+                          SimilarCluesNotice(nameController: _nameController),
                           Insets.large.height,
                           InputText(
                             hintText: 'Categoria',
