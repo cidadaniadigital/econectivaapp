@@ -26,7 +26,10 @@ class ClueContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final urls = links(clue);
+    final source = clue.metadata?['cdig'];
+    final sourceUrl =
+        source is Map ? Uri.tryParse('${source['url'] ?? ''}') : null;
+    final urls = links(clue).where((uri) => uri != sourceUrl).toList();
     final attributes = (clue.metadata ?? {})
         .entries
         .where((e) => !{
@@ -40,46 +43,55 @@ class ClueContent extends StatelessWidget {
               'url',
               'source_url',
               'link',
-              'conteudo_url'
+              'conteudo_url',
+              if (source is Map) ...{
+                'acervo',
+                'fonte',
+                'recurso_original',
+                'identificador_origem',
+                'lote_importacao',
+              }
             }.contains(e.key))
         .toList();
     if (urls.isEmpty && attributes.isEmpty) return CdigSource(clue: clue);
-    return Card(
-        child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CdigSource(clue: clue),
-                  if (attributes.isNotEmpty) ...[
-                    Text('Características cadastradas',
-                        style: Theme.of(context).textTheme.titleLarge),
-                    const Text(
-                        'Informações declaradas no cadastro desta pista.'),
-                    ...attributes.map((e) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text(
-                            '${e.key.replaceAll('_', ' ')}: ${e.value is Map || e.value is List ? jsonEncode(e.value) : e.value ?? 'não informado'}'))),
-                  ],
-                  if (urls.isNotEmpty) ...[
-                    const SizedBox(height: 12),
-                    Text('Conteúdo e referências vinculadas',
-                        style: Theme.of(context).textTheme.titleLarge),
-                    ...urls.map((uri) => ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: const Icon(Icons.open_in_new),
-                        title: Text(uri.host),
-                        subtitle: Text(uri.toString()),
-                        onTap: () async {
-                          final opened = await launchUrl(uri,
-                              mode: LaunchMode.externalApplication);
-                          if (!opened && context.mounted)
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        'Não foi possível abrir o conteúdo.')));
-                        })),
-                  ],
-                ])));
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CdigSource(clue: clue),
+      Card(
+          child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (attributes.isNotEmpty) ...[
+                      Text('Características cadastradas',
+                          style: Theme.of(context).textTheme.titleLarge),
+                      const Text(
+                          'Informações declaradas no cadastro desta pista.'),
+                      ...attributes.map((e) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Text(
+                              '${e.key.replaceAll('_', ' ')}: ${e.value is Map || e.value is List ? jsonEncode(e.value) : e.value ?? 'não informado'}'))),
+                    ],
+                    if (urls.isNotEmpty) ...[
+                      const SizedBox(height: 12),
+                      Text('Conteúdo e referências vinculadas',
+                          style: Theme.of(context).textTheme.titleLarge),
+                      ...urls.map((uri) => ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.open_in_new),
+                          title: Text(uri.host),
+                          subtitle: Text(uri.toString()),
+                          onTap: () async {
+                            final opened = await launchUrl(uri,
+                                mode: LaunchMode.externalApplication);
+                            if (!opened && context.mounted)
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'Não foi possível abrir o conteúdo.')));
+                          })),
+                    ],
+                  ]))),
+    ]);
   }
 }

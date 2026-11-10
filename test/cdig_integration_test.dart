@@ -61,6 +61,8 @@ void main() {
     expect(find.text('Tema: Educação'), findsOneWidget);
     expect(find.textContaining('deixou de estar disponível'), findsOneWidget);
     expect(find.textContaining('internal-staging-key'), findsNothing);
+    expect(find.textContaining('resource-99'), findsNothing);
+    expect(find.text('Características cadastradas'), findsNothing);
     expect(find.text('Consultar referência de origem'), findsOneWidget);
   });
 }
