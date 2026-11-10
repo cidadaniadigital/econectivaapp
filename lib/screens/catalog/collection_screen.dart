@@ -1,3 +1,4 @@
+import 'package:unisinos_usp_app/widgets/cdig_source.dart';
 import 'package:flutter/material.dart';
 import 'package:unisinos_usp_app/widgets/rich_clue_editor.dart';
 import 'package:unisinos_usp_app/widgets/living_clue_description_view.dart';
@@ -206,6 +207,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                               plainText: _collection!.description ?? '',
                               delta: _collection!.descriptionDelta,
                               clueId: _collection!.id),
+                          CdigSource(clue: _collection!),
                           const SizedBox(height: 20),
                         ],
                         if (_collection != null) ...[
@@ -226,9 +228,11 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                   child: Column(children: [
                                     ListTile(
                                         contentPadding: EdgeInsets.zero,
-                                        title: Text(entry.value.name),
+                                        title: Text(CollectionService.itemTitle(
+                                            _collection!, entry.value)),
                                         subtitle: Text(
-                                            entry.value.category?.name ?? ''),
+                                            CollectionService.itemSubtitle(
+                                                _collection!, entry.value)),
                                         onTap: () => Get.toNamed(
                                                 CollectionService.isCollection(
                                                         entry.value)

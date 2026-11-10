@@ -22,4 +22,30 @@ void main() {
     collection.metadata = {CollectionService.orderKey: 'not a list'};
     expect(CollectionService.orderedIds(collection, [4, 2]), [2, 4]);
   });
+  test('episode titles stay specific to each CDIG series', () {
+    final video =
+        LivingClueModel(id: 1, name: 'Video title', categoryId: 1, metadata: {
+      'cdig': {'type': 'video', 'id': '9', 'source': 'same'}
+    });
+    LivingClueModel series(String title) =>
+        LivingClueModel(id: 2, name: 'Series', categoryId: 1, metadata: {
+          'cdig': {
+            'source': 'same',
+            'episodes': [
+              {
+                'ID': '9',
+                'Episode': {'Title': title, 'Description': 'Series description'}
+              }
+            ]
+          }
+        });
+    expect(CollectionService.itemTitle(series('First title'), video),
+        'First title');
+    expect(CollectionService.itemTitle(series('Second title'), video),
+        'Second title');
+    expect(CollectionService.itemSubtitle(series('First title'), video),
+        'Series description');
+    expect(video.name, 'Video title');
+    expect(CollectionService.itemTitle(series(''), video), 'Video title');
+  });
 }

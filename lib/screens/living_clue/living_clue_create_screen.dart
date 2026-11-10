@@ -1,3 +1,4 @@
+import 'package:unisinos_usp_app/widgets/cdig_creation_notice.dart';
 import 'package:unisinos_usp_app/widgets/similar_clues_notice.dart';
 import 'package:unisinos_usp_app/webclients/living_clue_webclient.dart';
 import 'package:flutter/material.dart';
@@ -89,6 +90,7 @@ class _LivingClueCreateScreenState extends State<LivingClueCreateScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const CdigCreationNotice(),
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16),

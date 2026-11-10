@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:unisinos_usp_app/widgets/cdig_source.dart';
 import 'package:flutter/material.dart';
 import 'package:unisinos_usp_app/models/living_clue_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,6 +30,7 @@ class ClueContent extends StatelessWidget {
     final attributes = (clue.metadata ?? {})
         .entries
         .where((e) => !{
+              'cdig',
               'imagem_capa_arquivo_id',
               'capa_automatica_desativada',
               'imagem_capa_ajuste',
@@ -41,13 +43,14 @@ class ClueContent extends StatelessWidget {
               'conteudo_url'
             }.contains(e.key))
         .toList();
-    if (urls.isEmpty && attributes.isEmpty) return const SizedBox.shrink();
+    if (urls.isEmpty && attributes.isEmpty) return CdigSource(clue: clue);
     return Card(
         child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  CdigSource(clue: clue),
                   if (attributes.isNotEmpty) ...[
                     Text('Características cadastradas',
                         style: Theme.of(context).textTheme.titleLarge),

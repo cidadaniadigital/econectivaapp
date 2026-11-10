@@ -17,6 +17,45 @@ class CollectionService {
   static const orderKey = 'colecao_ordem_itens_v1';
   static bool isCollection(LivingClueModel clue) =>
       clue.category?.name == categoryName;
+
+  /// Episode text belongs to a series, while the video clue remains independent.
+  static Map? cdigEpisode(LivingClueModel collection, LivingClueModel item) {
+    final source = collection.metadata?['cdig'];
+    final video = item.metadata?['cdig'];
+    if (source is! Map ||
+        video is! Map ||
+        video['type'] != 'video' ||
+        source['source'] != video['source']) {
+      return null;
+    }
+    final episodes = source['episodes'];
+    if (episodes is! List) {
+      return null;
+    }
+    for (final entry in episodes.whereType<Map>()) {
+      final episodeId = (entry['ID'] ?? entry['id'])?.toString();
+      if (episodeId == video['id']?.toString()) {
+        final episode = entry['Episode'] ?? entry['episode'];
+        return episode is Map ? episode : null;
+      }
+    }
+    return null;
+  }
+
+  static String itemTitle(LivingClueModel collection, LivingClueModel item) {
+    final episode = cdigEpisode(collection, item);
+    final title = episode?['Title'] ?? episode?['title'];
+    return title is String && title.trim().isNotEmpty ? title : item.name;
+  }
+
+  static String itemSubtitle(LivingClueModel collection, LivingClueModel item) {
+    final episode = cdigEpisode(collection, item);
+    final description = episode?['Description'] ?? episode?['description'];
+    return description is String && description.trim().isNotEmpty
+        ? description
+        : item.category?.name ?? '';
+  }
+
   final clues = LivingClueWebclient();
   Future<CategoryModel?> category({bool create = false}) async {
     final categories = await CategoryWebclient().fetch();
