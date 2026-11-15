@@ -1,3 +1,4 @@
+import 'package:unisinos_usp_app/widgets/fauna_nearby.dart';
 import 'dart:convert';
 import 'package:unisinos_usp_app/widgets/clue_recent_readings.dart';
 import 'package:flutter/material.dart';
@@ -130,6 +131,10 @@ class _ClueObservationsState extends State<ClueObservations> {
                               : bounds.maxWidth,
                           child: _indicator(e.key, e.value, snapshot)))
                       .toList())),
+        ],
+        if (clue.hasLocation) ...[
+          const Divider(height: 32),
+          FaunaNearby(latitude: clue.latitude!, longitude: clue.longitude!),
         ],
       ]),
       const SizedBox(height: 16),

@@ -1,3 +1,4 @@
+import 'package:unisinos_usp_app/controllers/living_clue/fauna_map_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
@@ -7,15 +8,18 @@ import 'package:widgets_spo/widgets_spo.dart';
 
 /// Proxy requests use the application session; the GEOAPI secret stays server-side.
 class EnvironmentalMapTiles extends StatelessWidget {
-  const EnvironmentalMapTiles({super.key, required this.controller});
+  const EnvironmentalMapTiles(
+      {super.key, required this.controller, this.tileProvider});
+  final TileProvider? tileProvider;
   final EnvironmentalLayersController controller;
 
   Widget _tiles(EnvironmentalLayerModel layer) => TileLayer(
         key: ValueKey('geo-${layer.id}-${controller.tileRevision.value}'),
         urlTemplate: controller.webclient.absoluteTileUrl(layer),
-        tileProvider: NetworkTileProvider(headers: {
-          'Authorization': 'Bearer ${AuthProvider.instance.getToken()}',
-        }),
+        tileProvider: tileProvider ??
+            NetworkTileProvider(headers: {
+              'Authorization': 'Bearer ${AuthProvider.instance.getToken()}',
+            }),
         minNativeZoom: layer.minZoom,
         maxNativeZoom: layer.maxZoom,
         minZoom: layer.minZoom.toDouble(),
@@ -34,6 +38,7 @@ class EnvironmentalMapTiles extends StatelessWidget {
           if (base == null)
             TileLayer(
                 key: const ValueKey('basemap-osm'),
+                tileProvider: tileProvider,
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.br.spotecnologia.uniusp_app')
           else
@@ -48,7 +53,10 @@ class EnvironmentalMapTiles extends StatelessWidget {
 }
 
 class EnvironmentalLayersPanel extends StatelessWidget {
-  const EnvironmentalLayersPanel({super.key, required this.controller});
+  const EnvironmentalLayersPanel(
+      {super.key, required this.controller, this.fauna, this.onFaunaToggle});
+  final FaunaMapController? fauna;
+  final ValueChanged<bool>? onFaunaToggle;
   final EnvironmentalLayersController controller;
 
   @override
@@ -103,13 +111,30 @@ class EnvironmentalLayersPanel extends StatelessWidget {
                                   ? layer.description
                                   : 'Temporariamente indisponível'))),
                     ])),
-                ListTile(
-                    title: const Text('Camadas ambientais'),
-                    trailing: TextButton(
-                        onPressed: controller.activeLayers.isEmpty
-                            ? null
-                            : controller.disableAll,
-                        child: const Text('Desativar todas'))),
+                if (fauna != null)
+                  ListenableBuilder(
+                      listenable: fauna!,
+                      builder: (context, _) => SwitchListTile(
+                          title: const Text('Fauna observada · iNaturalist'),
+                          subtitle: const Text(
+                              'Avistamentos históricos; uma amostra, sem garantia de presença atual ou ausência de fauna.'),
+                          secondary:
+                              const Icon(Icons.pets, color: Colors.green),
+                          value: fauna!.enabled,
+                          onChanged: onFaunaToggle)),
+                ListenableBuilder(
+                    listenable: fauna ?? const AlwaysStoppedAnimation(false),
+                    builder: (context, _) => ListTile(
+                        title: const Text('Camadas ambientais'),
+                        trailing: TextButton(
+                            onPressed: controller.activeLayers.isEmpty &&
+                                    !(fauna?.enabled ?? false)
+                                ? null
+                                : () {
+                                    controller.disableAll();
+                                    onFaunaToggle?.call(false);
+                                  },
+                            child: const Text('Desativar todas')))),
                 if (controller.overlayLayers.isEmpty &&
                     !controller.isLoading.value &&
                     controller.errorMessage.value == null)
@@ -189,14 +214,18 @@ class EnvironmentalLayerLegend extends StatelessWidget {
 }
 
 class EnvironmentalMapControls extends StatelessWidget {
-  const EnvironmentalMapControls({super.key, required this.controller});
+  const EnvironmentalMapControls(
+      {super.key, required this.controller, this.fauna, this.onFaunaToggle});
+  final FaunaMapController? fauna;
+  final ValueChanged<bool>? onFaunaToggle;
   final EnvironmentalLayersController controller;
 
   void _panel(BuildContext context) => showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
-      builder: (_) => EnvironmentalLayersPanel(controller: controller));
+      builder: (_) => EnvironmentalLayersPanel(
+          controller: controller, fauna: fauna, onFaunaToggle: onFaunaToggle));
 
   void _legend(BuildContext context) => showModalBottomSheet<void>(
       context: context,
@@ -234,7 +263,8 @@ class EnvironmentalMapControls extends StatelessWidget {
               FilledButton.icon(
                   onPressed: () => _panel(context),
                   icon: const Icon(Icons.layers_outlined),
-                  label: Text('Camadas (${controller.activeLayers.length})')),
+                  label: Text(
+                      'Camadas (${controller.activeLayers.length + ((fauna?.enabled ?? false) ? 1 : 0)})')),
               if (controller.activeLayers.isNotEmpty)
                 FilledButton.tonalIcon(
                     onPressed: () => _legend(context),

@@ -1,3 +1,6 @@
+import 'package:unisinos_usp_app/controllers/living_clue/fauna_map_controller.dart';
+import 'package:unisinos_usp_app/webclients/fauna_webclient.dart';
+import 'package:unisinos_usp_app/widgets/fauna_nearby.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unisinos_usp_app/widgets/map_search_panel.dart';
@@ -16,7 +19,9 @@ import 'package:unisinos_usp_app/widgets/starfield_background.dart';
 import 'package:widgets_spo/widgets_spo.dart';
 
 class LivingClueMapScreen extends StatefulWidget {
-  const LivingClueMapScreen({super.key});
+  const LivingClueMapScreen({super.key, this.faunaSource, this.tileProvider});
+  final FaunaSource? faunaSource;
+  final TileProvider? tileProvider;
   @override
   State<LivingClueMapScreen> createState() => _LivingClueMapScreenState();
 }
@@ -27,6 +32,21 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
       Get.find<LivingClueMapController>();
   final MapController _mapController = MapController();
   final _environmentalController = Get.find<EnvironmentalLayersController>();
+  late final FaunaMapController _fauna =
+      FaunaMapController(source: widget.faunaSource);
+  void _onFaunaChanged() {
+    if (mounted) setState(() {});
+  }
+
+  void _toggleFauna(bool enabled) => _fauna.toggle(
+      enabled, _mapController.camera.zoom, _mapController.camera.visibleBounds);
+  @override
+  void dispose() {
+    _fauna.removeListener(_onFaunaChanged);
+    _fauna.dispose();
+    super.dispose();
+  }
+
   LatLng _tapCenter = const LatLng(-29.718, -51.143);
   bool _isConnectingMode = false;
   bool _repositionMode = false;
@@ -77,6 +97,12 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
       builder: (_) => SafeArea(
               child: ListView(shrinkWrap: true, children: [
             const ListTile(title: Text('Categorias no mapa')),
+            if (_fauna.enabled)
+              const ListTile(
+                  leading: Icon(Icons.pets, color: Colors.green),
+                  title: Text('Fauna observada · iNaturalist'),
+                  subtitle: Text(
+                      'Avistamentos históricos, independentes das pistas.')),
             ..._controller.categories.map((category) => ListTile(
                 leading: CategoryMapMarker(
                     color: _hex(category.colorHex),
@@ -96,6 +122,7 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
   @override
   void initState() {
     super.initState();
+    _fauna.addListener(_onFaunaChanged);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadCurrentBounds();
       _environmentalController.openWithSatellite();
@@ -419,6 +446,28 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
                   ],
                 ),
               ),
+              if (_fauna.enabled)
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(children: [
+                      const Icon(Icons.pets, color: Colors.green, size: 20),
+                      const SizedBox(width: 8),
+                      Expanded(
+                          child: Text(
+                              _fauna.loading
+                                  ? 'Consultando fauna…'
+                                  : _fauna.message ??
+                                      '${_fauna.observations.length} avistamentos históricos · iNaturalist${_fauna.limited ? " · amostra limitada" : ""}',
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12))),
+                      IconButton(
+                          tooltip: 'Atualizar fauna',
+                          onPressed: () => _fauna.updateViewport(
+                              _mapController.camera.zoom,
+                              _mapController.camera.visibleBounds,
+                              immediate: true),
+                          icon: const Icon(Icons.refresh, color: Colors.white)),
+                    ])),
               Expanded(
                 child: Obx(() {
                   final markers = _controller.livingClues
@@ -532,6 +581,11 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
                         options: MapOptions(
                           initialCenter: _tapCenter,
                           initialZoom: 13,
+                          onPositionChanged: (camera, hasGesture) {
+                            if (_fauna.enabled)
+                              _fauna.updateViewport(
+                                  camera.zoom, camera.visibleBounds);
+                          },
                           onMapEvent: (event) {
                             if (event is MapEventMoveEnd &&
                                 _controller.activeSearch.isEmpty &&
@@ -550,12 +604,37 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
                         ),
                         children: [
                           EnvironmentalMapTiles(
-                              controller: _environmentalController),
+                              controller: _environmentalController,
+                              tileProvider: widget.tileProvider),
                           if (circles.isNotEmpty) CircleLayer(circles: circles),
                           if (connectionLines.isNotEmpty)
                             PolylineLayer(polylines: connectionLines),
                           MarkerLayer(markers: [
                             ...markers,
+                            ..._fauna.observations.map((item) => Marker(
+                                point: LatLng(item.latitude, item.longitude),
+                                width: 38,
+                                height: 38,
+                                child: Semantics(
+                                    button: true,
+                                    label: 'Fauna: ${item.title}',
+                                    child: Tooltip(
+                                        message:
+                                            '${item.title} · localização aproximada',
+                                        child: GestureDetector(
+                                            onTap: () =>
+                                                showFaunaDetails(context, item),
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        Colors.green.shade700,
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: Colors.white,
+                                                        width: 2)),
+                                                child: const Icon(Icons.pets,
+                                                    color: Colors.white,
+                                                    size: 22))))))),
                             if (_pendingPosition != null)
                               Marker(
                                   point: _pendingPosition!,
@@ -588,7 +667,9 @@ class _LivingClueMapScreenState extends State<LivingClueMapScreen> {
                                 onPressed: _markerLegend),
                           ])),
                       EnvironmentalMapControls(
-                          controller: _environmentalController),
+                          controller: _environmentalController,
+                          fauna: _fauna,
+                          onFaunaToggle: _toggleFauna),
                       if (_controller.isLoading.value)
                         const Positioned.fill(
                           child: IgnorePointer(
