@@ -18,12 +18,12 @@ Assim como na referência OnLIFE, a camada é rasterizada: clicar nos polígonos
 
 ## Disponibilidade por instalação
 
-A Geo API é compartilhada e já recebeu o conjunto DETER. A instância Go da USP é independente da instância OnLIFE, embora use o mesmo código. Em 19/11/2026, Atopos ainda executa `onlife-api:fauna-a0896dc` e responde 404 ao novo endpoint; OnLIFE executa `onlife-api:deter-f4cd06c`.
+A Geo API é compartilhada e já recebeu o conjunto DETER. A instância Go da USP é independente da instância OnLIFE, embora use o mesmo código. Antes da publicação de 19/11/2026, Atopos executava `onlife-api:fauna-a0896dc` e respondia 404 ao novo endpoint. Em 19/11/2026, a instância Atopos foi atualizada para `onlife-api:deter-f4cd06c`, imagem também validada na OnLIFE.
 
-Para disponibilizar o resumo em produção USP, publicar a imagem já validada `onlife-api:deter-f4cd06c` na instância Atopos, mantendo seu `.env`, banco `atopos_api`, origem e armazenamento próprios. O diff `a0896dc..f4cd06c` adiciona apenas proxy DETER, testes e documentação, sem migração de banco. Não é necessário alterar ou reimportar a Geo API. Esta adaptação é entregue em branch para revisão, sem alterar as instâncias de produção.
+O procedimento de publicação utiliza a imagem já validada `onlife-api:deter-f4cd06c` na instância Atopos, mantendo seu `.env`, banco `atopos_api`, origem e armazenamento próprios. O diff `a0896dc..f4cd06c` adiciona apenas proxy DETER, testes e documentação, sem migração de banco. Não é necessário alterar ou reimportar a Geo API. A atualização Atopos preservou um backup privado e conferiu os registros existentes das 35 tabelas, sem diferenças. A instância OnLIFE não foi reiniciada. A publicação direta na main e no site foi autorizada pelo responsável nesta sessão.
 
 ## Verificação
 
 Testes cobrem celular e desktop, carregamento, erro e nova tentativa, vazio, cobertura, sincronização pendente, troca rápida de raio, troca de coordenadas, descarte após remoção, integração com o detalhe da pista, contrato HTTP e regressões das camadas/fauna. O catálogo DETER é exercitado no mapa com tiles locais, para validar ativação, opacidade, legenda e desativação sem depender da rede.
 
-Validação desta adaptação: 26 testes selecionados aprovados, incluindo o mapa em 390 e 1280 pixels e a seção em 320, 390 e 1280 pixels; `flutter analyze` sem erros (há avisos e sugestões no projeto); `flutter build web --release --no-tree-shake-icons --dart-define=API_BASE_URL=https://api.atopos.spotec.app/api` concluído. As consultas de dados nos testes são controladas; não se afirma validação autenticada do novo endpoint na instância Atopos enquanto ela permanece na imagem anterior.
+Validação desta adaptação: 26 testes selecionados aprovados, incluindo o mapa em 390 e 1280 pixels e a seção em 320, 390 e 1280 pixels; `flutter analyze` sem erros (há avisos e sugestões no projeto); `flutter build web --release --no-tree-shake-icons --dart-define=API_BASE_URL=https://api.atopos.spotec.app/api` concluído. As consultas de dados nos testes são controladas; a validação autenticada em produção é registrada abaixo após a atualização da API.
